@@ -7,8 +7,7 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import { WelcomeCard } from '../components';
-import Seperator from '../components/Seperator';
+import { WelcomeCard, Seperator } from '../components';
 import { Colors, Fonts, General } from '../constants';
 import { Display } from '../utils';
 
@@ -34,7 +33,7 @@ const Pagination = ({ index }) => {
   );
 };
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
   const [welcomeListIndex, setWelcomeListIndex] = useState(0);
   const welcomeList = useRef();
   const onViewRef = useRef(({ changed }) => {
@@ -77,7 +76,8 @@ const WelcomeScreen = () => {
       {welcomeListIndex === 2 ? (
         <TouchableOpacity
           activeOpacity={0.8}
-          style={styles.gettingStartedButton}>
+          style={styles.gettingStartedButton}
+          onPress={() => navigation.navigate('SignIn')}>
           <Text style={styles.gettingStartedButtonText}>Get Started</Text>
         </TouchableOpacity>
       ) : (
